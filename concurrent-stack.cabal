@@ -16,11 +16,13 @@ cabal-version:       >=1.10
 library
   hs-source-dirs:      src
   ghc-options:         -Wall
-  exposed-modules:     Lib
+  exposed-modules:     Control.Concurrent.Stack
   other-modules:       Lib.Prelude
   build-depends:       base >= 4.7 && < 5
                      , protolude >= 0.1.6 && < 0.2
                      , async
+                     , stm
+                     , transformers
   default-language:    Haskell2010
   default-extensions:  OverloadedStrings, NoImplicitPrelude
 
@@ -31,6 +33,9 @@ test-suite concurrent-stack-test
   build-depends:       base
                      , concurrent-stack
                      , protolude >= 0.1.6 && < 0.2
+                     , test-framework
+                     , test-framework-hunit
+                     , HUnit
   ghc-options:         -Wall -threaded -rtsopts -with-rtsopts=-N
   default-language:    Haskell2010
   default-extensions:  OverloadedStrings, NoImplicitPrelude
